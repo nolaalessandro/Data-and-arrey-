@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Gestione Prodotti</h2>
+
+  <div class="card p-3 mb-4 shadow-sm border-success">
+    <h5>Aggiungi Nuovo Prodotto</h5>
+    <div class="row g-2">
+      <div class="col-md-4">
+        <input [(ngModel)]="newProduct.name" class="form-control" placeholder="Nome">
+      </div>
+      <div class="col-md-2">
+        <input [(ngModel)]="newProduct.price" type="number" class="form-control" placeholder="Prezzo">
+      </div>
+      <div class="col-md-4">
+        <input [(ngModel)]="newProduct.description" class="form-control" placeholder="Descrizione">
+      </div>
+      <div class="col-md-2 d-grid">
+        <button (click)="addProduct()" class="btn btn-success">Aggiungi</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="list-group">
+        <div *ngFor="let p of products; let i = index" 
+             (click)="onSelect(p)"
+             class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+             style="cursor: pointer;">
+          {{ p.name }} - {{ p.price }}€
+          <button class="btn btn-danger btn-sm" (click)="deleteProduct(i); $event.stopPropagation()">
+            Elimina
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <app-product-detail [product]="selectedProduct"></app-product-detail>
+    </div>
+
+</div>

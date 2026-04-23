@@ -13,17 +13,18 @@ import { FormsModule } from '@angular/forms'; // 1. AGGIUNGI QUESTO IMPORT
 })
 export class ProductListComponent {
   
+  // Array prodotti
   products: Product[] = [
-    { name: 'Smartphone', price: 699, description: 'Display OLED da 6 pollici' },
-    { name: 'Laptop', price: 1200, description: 'Ottimo per programmatori' },
-    { name: 'Cuffie BT', price: 150, description: 'Cancellazione del rumore' },
+    { name: 'Iphone 17', price: 699, description: 'Ultimo telefono di Apple' },
+    { name: 'Universal Audio Apollo Solo', price: 1200, description: 'Audio interface per studio' },
+    { name: 'Cuffie DT990 Pro', price: 150, description: 'cuffie aperte per ilmixing' },
     { name: 'Monitor 4K', price: 400, description: 'Perfetto per il design' },
-    { name: 'Tastiera Meccanica', price: 90, description: 'Switch Cherry MX Red' }
+    { name: 'Tastiera Meccanica', price: 90, description: 'Perfetta per i programmatori' }
   ];
 
   selectedProduct: Product | null = null;
 
-  // 3. AGGIUNGI QUESTA VARIABILE (serve per legare i campi del form)
+  // serve per legare i campi del form
   newProduct: Product = { name: '', price: 0, description: '' };
 
   onSelect(p: Product): void {
@@ -43,7 +44,7 @@ export class ProductListComponent {
     }
   }
 
-  // 4. AGGIUNGI QUESTA FUNZIONE (per il tasto "Aggiungi")
+  // per il tasto Aggiungi
   addProduct(): void {
     if (this.newProduct.name && this.newProduct.price > 0) {
       // Usiamo lo spread [...] per creare un nuovo oggetto, altrimenti modificheresti sempre lo stesso
